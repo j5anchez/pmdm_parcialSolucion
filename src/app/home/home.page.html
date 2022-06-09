@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cuestionario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let item of cuestionario.getPreguntas()">
+    <ion-item>
+      <ion-label>{{item.pregunta}}</ion-label>
+      <ion-badge *ngIf="item.contestada == 1" color="success" mode="ios">{{item.respuesta}}</ion-badge>
+      <ion-badge *ngIf="item.contestada < 0" color="danger" mode="ios">{{item.contestada}}</ion-badge>
+      <ion-button (click)="onClick(item)" expand="block" fill="clear" shape="round">
+        Responder
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="guardar()" expand="block" fill="clear" shape="round">
+    Guardar cuestionario
+  </ion-button>
+</ion-content>
